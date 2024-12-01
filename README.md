@@ -1,6 +1,6 @@
 # casa0014
 coursework
-# DIY Environmental Monitoring System - Light Control with Vibration and Sound Sensors
+# Chrono Lumina - Light Control with Vibration and Sound Sensors
 
 ## Project Overview
 This project involves controlling an RGB light setup using an Arduino-based microcontroller. The system is designed to react to two types of inputs: vibration and sound. When a vibration is detected, the light color changes. Meanwhile, sound levels control the number of active pixels in the light setup, simulating a brightness control based on ambient sound. The system also integrates MQTT for remote control via the internet.
