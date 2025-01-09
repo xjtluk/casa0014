@@ -1,5 +1,6 @@
 # Chrono Lumina - Light Control with Vibration and Sound Sensors
 <img src="https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/pic1.jpg" alt="Example Image" width="300"/>
+<img src="https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/result1.jpg" alt="Example Image" width="300"/>
 
 ## Project Overview
 One of the most compelling aspects of Internet-connected devices is their ability to monitor phenomena that are otherwise challenging to observe directly. This project, developed as part of the CASA0014 coursework, focuses on designing an IoT device to visualize and quantify classroom engagement.
@@ -83,6 +84,9 @@ One of the most compelling aspects of Internet-connected devices is their abilit
   ![Code Example](https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/code1.png)
   
 ## Results and Reflection
+<img src="https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/result2.jpg" alt="Example Image" width="300"/>
+<img src="https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/result3.png" alt="Example Image" width="300"/>
+
 ### Achievements
 - Successfully visualized classroom engagement with dynamic lighting.
 - Enabled real-time feedback for teachers to adapt teaching methods.
