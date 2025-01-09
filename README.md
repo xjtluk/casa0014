@@ -18,51 +18,59 @@ One of the most compelling aspects of Internet-connected devices is their abilit
   - Easily adaptable for various educational or workplace environments.
 
 ## Components and Hardware
-### Core Hardware
-- **Arduino MKR WiFi 1010**: Enables seamless integration with the school's MQTT system.
-- **Chrono Lumina Neopixels**: Provides dynamic visual feedback.
-- **Sound Sensor (V1.6)**: Detects sound levels in the classroom.
-- **Vibration Sensor (V1.1)**: Captures subtle vibrations caused by student activity.
+## Hardware Components
+- **Arduino MKR WiFi 1010**: Microcontroller with built-in WiFi support.
+- **Vibration Sensor (Analog)**: Detects vibrations to trigger color changes.
+- **Sound Sensor (Analog)**: Measures sound levels to control pixel activation.
+- **Lighting System**: 12 individually addressable pixels.
+- **WiFi Connectivity**: Connects to the network to send MQTT messages.
 
-### Enclosure Design
-- **Custom 3D-Printed Shell**: Protects components while ensuring accurate sensor readings with features like perforations for sound detection and open areas for vibration sensing.
+## Software Components
+- **Arduino IDE**: Development environment for writing and uploading code.
+- **MQTT Protocol**: Used for communication between the Arduino board and the lighting system.
+- **Libraries**:
+  - `WiFiNINA.h`: Manages WiFi connectivity.
+  - `PubSubClient.h`: Enables MQTT communication.
 
-## How It Works
-### Data Visualization
-- **Brightness Control via Sound**:
-  - Sound intensity determines the number of active neopixels:
-    - Low (0–341): Activates 4 pixels.
-    - Medium (342–682): Activates 8 pixels.
-    - High (683–1023): Activates all 12 pixels.
-- **Color Control via Vibration**:
-  - Vibrations exceeding a threshold trigger color changes, representing activity levels. A timing constraint ensures smooth transitions.
+## Functional Workflow
 
-### Usage Scenario
-Designed for indoor classroom environments, the system translates sound and movement data into intuitive visual feedback, making abstract engagement metrics tangible.
+### Setup Phase:
+- Establishes WiFi and MQTT connections.
+- Initializes sensors and sets up system variables.
 
-## Software
-### Programming Approach
-- **Modular Implementation**:
-  - Tested each sensor independently before integrating them.
-- **Threshold-Based Logic**:
-  - Adjusted thresholds for meaningful sensor data processing.
-- **MQTT Integration**:
-  - Used the `arduino_secrets.h` template to securely configure network settings.
+### Vibration Sensor Logic:
+- Reads the analog value from the vibration sensor.
+- If the value exceeds the threshold, the system cycles to the next predefined color and updates all pixels.
 
-## Setup Instructions
-### Hardware Assembly:
-1. Connect sensors and neopixels to the Arduino MKR WiFi 1010.
-2. Secure components in the 3D-printed enclosure.
+### Sound Sensor Logic:
+- Reads the analog value from the sound sensor.
+- Based on the sound intensity, determines the number of active pixels:
+  - Low Sound (0-340): Activates 4 pixels.
+  - Medium Sound (341-681): Activates 8 pixels.
+  - High Sound (682-1023): Activates all 12 pixels.
+- Updates pixel colors and deactivates unused pixels.
 
-### Software Setup:
-1. Clone the repository.
-2. Install required libraries: `Arduino_MQTT` and `Adafruit_NeoPixel`.
-3. Upload the code to the Arduino board.
+### MQTT Communication:
+- Constructs and publishes MQTT messages to update pixel states remotely.
 
-### Network Configuration:
-1. Add WiFi credentials to the `arduino_secrets.h` file.
-2. Deploy the MQTT client on the same network.
+## Code Overview
 
+### WiFi and MQTT Configuration:
+- Credentials are stored securely in a separate `arduino_secrets.h` file for safety.
+- The system reconnects to WiFi or MQTT automatically if the connection is lost.
+
+### Vibration Handling:
+- Uses a debounce interval to prevent rapid state changes.
+- Cycles through four colors and applies them to all pixels.
+
+### Sound Handling:
+- Dynamically calculates the number of active pixels based on sound intensity.
+- Turns off inactive pixels to save energy.
+
+### MQTT Messaging:
+- Constructs JSON messages with pixel ID and RGB values.
+- Publishes messages to a pre-defined topic.
+  
 ## Results and Reflection
 ### Achievements
 - Successfully visualized classroom engagement with dynamic lighting.
