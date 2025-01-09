@@ -1,4 +1,4 @@
-# Chrono Lumina - Light Control with Vibration and Sound Sensors
+# Student Engagement Detector - Light Control with Vibration and Sound Sensors
 <img src="https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/pic1.jpg" alt="Example Image" width="300"/>
 <img src="https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/result1.jpg" alt="Example Image" width="300"/>
 
