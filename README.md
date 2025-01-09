@@ -24,8 +24,10 @@ One of the most compelling aspects of Internet-connected devices is their abilit
 - **Arduino MKR WiFi 1010**: Microcontroller with built-in WiFi support.
 - **Vibration Sensor (Analog)**: Detects vibrations to trigger color changes.
 <img src="https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/sensor1.jpg" alt="Example Image" width="300"/>
+
 - **Sound Sensor (Analog)**: Measures sound levels to control pixel activation.
 <img src="https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/sensor2.jpg" alt="Example Image" width="300"/>
+
 - **Lighting System**: 12 individually addressable pixels.
 - **WiFi Connectivity**: Connects to the network to send MQTT messages.
 
