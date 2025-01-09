@@ -1,59 +1,101 @@
-# casa0014
-coursework
 # Chrono Lumina - Light Control with Vibration and Sound Sensors
 
 ## Project Overview
-This project involves controlling an RGB light setup using an Arduino-based microcontroller. The system is designed to react to two types of inputs: vibration and sound. When a vibration is detected, the light color changes. Meanwhile, sound levels control the number of active pixels in the light setup, simulating a brightness control based on ambient sound. The system also integrates MQTT for remote control via the internet.
+One of the most compelling aspects of Internet-connected devices is their ability to monitor phenomena that are otherwise challenging to observe directly. This project, developed as part of the CASA0014 coursework, focuses on designing an IoT device to visualize and quantify classroom engagement.
 
-## Requirements
-- **Hardware**:
-  - Arduino MKR WiFi 1010
-  - Vibration Sensor (Analog)
-  - Sound Sensor (Analog)
-  - RGB Light setup (12 pixels)
-  - Wi-Fi access and MQTT broker for remote communication
+### Purpose
+**The Problem**: Measuring student engagement in real-time is a persistent challenge for educators. Subjective observations and post-class feedback lack the precision required for immediate teaching adjustments.
 
-- **Libraries**:
-  - `WiFiNINA.h` - For Wi-Fi connectivity
-  - `PubSubClient.h` - For MQTT communication
+**The Solution**: The Student Engagement Detector provides a dynamic visual representation of classroom engagement using Chrono Lumina neopixels, helping educators assess participation levels and adapt their strategies accordingly.
 
-## Setup
-1. **Wi-Fi Configuration**: Connect the Arduino to your Wi-Fi using the SSID and password.
-2. **MQTT Broker**: The system connects to an MQTT broker (`mqtt.cetools.org`) for communication. The topic `student/CASA0014/light/29/pixel/` is used for controlling the RGB pixels.
+### Features
+- **Interactive Visual Feedback**:
+  - **Sound Sensor**: Measures verbal participation, adjusting the number of active neopixels based on sound intensity.
+  - **Vibration Sensor**: Captures classroom movement, triggering color changes to indicate physical activity.
+- **IoT-Enabled Communication**:
+  - Built on the Arduino MKR WiFi 1010, the system connects to an MQTT network for real-time data transmission and control.
+- **Customizable and Scalable Design**:
+  - Easily adaptable for various educational or workplace environments.
 
-## Functionality
-- **Vibration Detection**:
-  - When vibration exceeds a set threshold, the light color changes.
-  - The color cycles through red, green, blue, and white.
-  
-- **Sound Detection**:
-  - The number of active pixels adjusts based on the sound level.
-  - Lower sound levels (0-340) activate 4 pixels, mid levels (341-681) activate 8, and high levels (682-1023) activate all 12 pixels.
+## Components and Hardware
+### Core Hardware
+- **Arduino MKR WiFi 1010**: Enables seamless integration with the school's MQTT system.
+- **Chrono Lumina Neopixels**: Provides dynamic visual feedback.
+- **Sound Sensor (V1.6)**: Detects sound levels in the classroom.
+- **Vibration Sensor (V1.1)**: Captures subtle vibrations caused by student activity.
 
-- **MQTT Communication**:
-  - The Arduino sends MQTT messages to update the light color and brightness (pixel count) based on the inputs.
+### Enclosure Design
+- **Custom 3D-Printed Shell**: Protects components while ensuring accurate sensor readings with features like perforations for sound detection and open areas for vibration sensing.
 
-## Code Explanation
-- The code uses **WiFi** to connect to the internet and **MQTT** to communicate with the light setup.
-- **Vibration Sensor**: Detects vibrations and changes the light color.
-- **Sound Sensor**: Controls the number of active pixels based on the sound level.
-- The **`sendmqtt`** function sends RGB color values to each pixel of the light setup.
+## How It Works
+### Data Visualization
+- **Brightness Control via Sound**:
+  - Sound intensity determines the number of active neopixels:
+    - Low (0–341): Activates 4 pixels.
+    - Medium (342–682): Activates 8 pixels.
+    - High (683–1023): Activates all 12 pixels.
+- **Color Control via Vibration**:
+  - Vibrations exceeding a threshold trigger color changes, representing activity levels. A timing constraint ensures smooth transitions.
 
-## Key Functions
-- `sendmqtt(int pixelID, int r, int g, int b)`: Sends the color data to the MQTT broker for updating the light pixels.
-- `startWifi()`: Connects the Arduino to the Wi-Fi network.
-- `reconnectMQTT()`: Ensures the system reconnects to the MQTT broker if disconnected.
+### Usage Scenario
+Designed for indoor classroom environments, the system translates sound and movement data into intuitive visual feedback, making abstract engagement metrics tangible.
 
-## Usage
-1. Upload the code to the Arduino.
-2. Ensure the vibration and sound sensors are connected to the correct pins (`A0` for vibration, `A1` for sound).
-3. Monitor the light setup’s reaction to vibration and sound.
+## Software
+### Programming Approach
+- **Modular Implementation**:
+  - Tested each sensor independently before integrating them.
+- **Threshold-Based Logic**:
+  - Adjusted thresholds for meaningful sensor data processing.
+- **MQTT Integration**:
+  - Used the `arduino_secrets.h` template to securely configure network settings.
 
-## Troubleshooting
-- If the Wi-Fi connection fails, ensure the SSID and password are correctly set.
-- For MQTT issues, verify that the broker address and credentials are correct.
+## Setup Instructions
+### Hardware Assembly:
+1. Connect sensors and neopixels to the Arduino MKR WiFi 1010.
+2. Secure components in the 3D-printed enclosure.
 
-Enjoy experimenting with this interactive light control system!
+### Software Setup:
+1. Clone the repository.
+2. Install required libraries: `Arduino_MQTT` and `Adafruit_NeoPixel`.
+3. Upload the code to the Arduino board.
+
+### Network Configuration:
+1. Add WiFi credentials to the `arduino_secrets.h` file.
+2. Deploy the MQTT client on the same network.
+
+## Results and Reflection
+### Achievements
+- Successfully visualized classroom engagement with dynamic lighting.
+- Enabled real-time feedback for teachers to adapt teaching methods.
+- Demonstrated the potential of IoT in educational environments.
+
+### Challenges and Solutions
+- **Sensor Limitations**:
+  - Adjusted system logic to accommodate vibration sensors that only detect presence, not magnitude.
+- **Visual Clarity**:
+  - Grouped sound intensity levels to ensure noticeable lighting changes.
+
+### Future Enhancements
+- **Machine Learning Integration**:
+  - Analyze patterns in sound and vibration data for nuanced insights.
+- **Improved Visual Feedback**:
+  - Replace pixel count-based brightness with variable brightness levels.
+- **Mobile Interface**:
+  - Develop a dashboard for monitoring trends and customizing settings.
+- **Expanded Applications**:
+  - Integrate additional sensors to capture environmental factors like temperature or CO2 levels.
+
+
+## Ethical Considerations
+- **Privacy**: Ensure no personally identifiable data is collected.
+- **Security**: Use encrypted communication to prevent unauthorized access.
+- **Over-Simplification**: Avoid reliance on metrics that may misrepresent engagement nuances.
+
+## Conclusion
+The Student Engagement Detector bridges the gap between abstract engagement metrics and actionable insights. By addressing feedback and refining its design, the project highlights how IoT can transform learning environments and foster data-driven interventions for improved teaching outcomes.
+
+## Important Note
+Make sure to delete your `arduino_secrets.h` file from your GitHub repository to avoid exposing sensitive information.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
