@@ -31,6 +31,9 @@ One of the most compelling aspects of Internet-connected devices is their abilit
 - **Libraries**:
   - `WiFiNINA.h`: Manages WiFi connectivity.
   - `PubSubClient.h`: Enables MQTT communication.
+ 
+## Enclosure Design
+- Custom 3D-Printed Shell: Protects components while ensuring accurate sensor readings with features like perforations for sound detection and open areas for vibration sensing
 
 ## Functional Workflow
 
@@ -105,6 +108,5 @@ The Student Engagement Detector bridges the gap between abstract engagement metr
 ## Important Note
 Make sure to delete your `arduino_secrets.h` file from your GitHub repository to avoid exposing sensitive information.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
