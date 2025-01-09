@@ -37,10 +37,13 @@ One of the most compelling aspects of Internet-connected devices is their abilit
  
 ## Enclosure Design
 - Custom 3D-Printed Shell: Protects components while ensuring accurate sensor readings with features like perforations for sound detection and open areas for vibration sensing
+<img src="https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/pic3.jpg" alt="Example Image" width="300"/>
 
 ## Functional Workflow
 
 ### Setup Phase:
+<img src="https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/pic2.png" alt="Example Image" width="300"/>
+
 - Establishes WiFi and MQTT connections.
 - Initializes sensors and sets up system variables.
 
