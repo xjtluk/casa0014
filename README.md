@@ -1,5 +1,5 @@
 # Chrono Lumina - Light Control with Vibration and Sound Sensors
-
+![Code Example](https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/pic1.png)
 ## Project Overview
 One of the most compelling aspects of Internet-connected devices is their ability to monitor phenomena that are otherwise challenging to observe directly. This project, developed as part of the CASA0014 coursework, focuses on designing an IoT device to visualize and quantify classroom engagement.
 
@@ -65,14 +65,16 @@ One of the most compelling aspects of Internet-connected devices is their abilit
 ### Vibration Handling:
 - Uses a debounce interval to prevent rapid state changes.
 - Cycles through four colors and applies them to all pixels.
-
+![Code Example](https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/code2.png)
 ### Sound Handling:
 - Dynamically calculates the number of active pixels based on sound intensity.
 - Turns off inactive pixels to save energy.
-
+  
+![Code Example](https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/code3.png)
 ### MQTT Messaging:
 - Constructs JSON messages with pixel ID and RGB values.
 - Publishes messages to a pre-defined topic.
+  ![Code Example](https://github.com/xjtluk/casa0014/blob/main/ce_work/Doc/code1.png)
   
 ## Results and Reflection
 ### Achievements
